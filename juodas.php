@@ -1,12 +1,13 @@
-<!-- Padarykite juodą puslapį, kuriame būtų POST forma, mygtukas ir atsitiktinis kiekis (3-10) checkbox su raidėm A,B,C… Padarykite taip, kad paspaudus mygtuką, fono spalva pasikeistų į baltą, forma išnyktų ir atsirastų skaičius, rodantis kiek buvo pažymėta checkboksų (ne kurie, o kiek).  -->
-
+<!-- Pakartokite 9 uždavinį. Padarykite taip, kad atsirastų du skaičiai. Vienas rodytų kiek buvo pažymėta, o kitas kiek iš vis buvo jų sugeneruota. -->
 <?php
 $color = 'black';
-$visability = 'visible';
-if(!empty($_GET)){
+$visability = 'inline';
+if(!empty($_POST)){
     $color = 'white';
     $visability = 'none';
-    echo "<h3>". count($_GET) . "</h3>";
+    echo "<h3>". (count($_POST) - 1) . "</h3><br>";
+    echo '<h2>' . $_POST['deziu-kiekis'] . '</h2>';
+    die;
 }
 ?>
 <!DOCTYPE html>
@@ -18,8 +19,7 @@ if(!empty($_GET)){
     <title>Document</title>
 </head>
 <body style="background-color: <?=  $color?>;">
-<form style="display: <?= $visability?>;">
-
+<form action='' method='post' style="display: <?=  $visability?>;">
 <?php
 $checkboxuKiekis = rand(3, 10);
 $checkboxHTML = '';
@@ -27,9 +27,10 @@ for($i = 0; $i < $checkboxuKiekis; $i++){
 $checkboxHTML.= "<input type='checkbox' id='". chr(65 + $i) ."' name='". chr(65 + $i) ."' value='Bike'>
 <label for='". chr(65 + $i) ."' style = 'color: white;'>" . chr(65 + $i) . "</label><br>";
 }
-echo "<form action='' method='post'>" . $checkboxHTML . "<button type='submit'>Skaiciuoti</button></form>";
-?>
+echo  $checkboxHTML . "<input type='hidden' name='deziu-kiekis' value='" .$checkboxuKiekis. "' />";
 
+?>
+<button type='submit'>Skaiciuoti</button>
 </form>
 </body>
 </html>
