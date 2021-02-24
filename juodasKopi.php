@@ -2,10 +2,11 @@
 <?php
 $color = 'black';
 $visability = 'inline';
-if(!empty($_GET)){
+if(!empty($_POST)){
     $color = 'white';
     $visability = 'none';
-    echo "<h3>". count($_GET) . "</h3>";
+    echo "<h3>". count($_POST) . "</h3>";
+    die;
 }
 ?>
 <!DOCTYPE html>
