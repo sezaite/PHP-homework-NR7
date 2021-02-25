@@ -5,6 +5,7 @@
 //     header("Location: http://localhost/bit/ndWEB7/astuntas/pink.php");
 //     die;
 //   }
+// jei sita atidarysiu, atsidarys infinity redirectai
 ?>
 
 <!DOCTYPE html>
